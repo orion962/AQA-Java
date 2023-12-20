@@ -20,14 +20,7 @@ public class Main {
     {
         int a = 5;
         int b = -9;
-        if (a + b >= 0)
-        {
-            System.out.println("Сумма положительная");
-        }
-        else
-        {
-            System.out.println("Сумма отрицательная");
-        }
+        System.out.println((a + b >= 0) ? "Сумма положительная" : "Сумма отрицательная");
     }
 
     static void printColor()
@@ -51,13 +44,6 @@ public class Main {
     {
         int a = 7;
         int b = 12;
-        if (a >= b)
-        {
-            System.out.println("a >= b");
-        }
-        else
-        {
-            System.out.println("a < b");
-        }
+        System.out.println((a >= b) ? "a >= b" : "a < b");
     }
 }
