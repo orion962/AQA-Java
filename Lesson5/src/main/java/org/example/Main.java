@@ -62,8 +62,7 @@ public class Main {
         ///////////////////////////////////////////////
         Bowl bowl = new Bowl(100);
         Cat[] arr = {cat1, cat2, cat3};
-        for (int i = 0; i < arr.length; ++i)
-        {
+        for (int i = 0; i < arr.length; ++i) {
             arr[i].eat(40, bowl);
             arr[i].getSatiety();
         }
