@@ -14,8 +14,8 @@ public class Main {
         arr[4] = new Employee("Sychov Sych", "Car-mechanic",
                 "sychsych@mailbox.com", "892316112", 36000, 43);
 
-        for (int i = 0; i < 5; ++i) {
-            arr[i].printString();
+        for (Employee obj: arr) {
+            obj.printString();
         }
         System.out.println();
         //////////////////////////////////////////////////////////////////////
