@@ -1,8 +1,8 @@
 package org.example;
 
 public class MyArrayDataException extends Exception {
-    int line;
-    int column;
+    private final int line;
+    private final int column;
 
     MyArrayDataException(String msg, int line, int column) {
         super(msg);
