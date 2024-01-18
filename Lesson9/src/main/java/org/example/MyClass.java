@@ -66,15 +66,13 @@ class MyClass {
         }
     }
 
-    long getAverageAge()
-    {
+    long getAverageAge() {
         return students.stream().filter(s -> s.getGender() == Gender.MAN).reduce(
-                0,(x, y) -> x+y.getAge(), Integer::sum) / students.stream().filter(
-                        s -> s.getGender() == Gender.MAN).count();
+                0, (x, y) -> x + y.getAge(), Integer::sum) / students.stream().filter(
+                s -> s.getGender() == Gender.MAN).count();
     }
 
-    void getSummons()
-    {
+    void getSummons() {
         students.stream().filter(s -> s.getGender() == Gender.MAN
                 && (s.getAge() >= 18 && s.getAge() <= 27)).forEach(System.out::println);
     }
