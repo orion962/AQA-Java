@@ -3,9 +3,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -60,6 +63,10 @@ public class TestClass {
         phoneField.sendKeys("297777777");
         moneyField.sendKeys("100");
         btn.click();
+        WebElement iframe = driver.findElement(By.xpath("//iframe[@class='bepaid-iframe']"));
+        WebElement dynamicElement = (new WebDriverWait(driver, Duration.ofSeconds(10)))
+                .until(ExpectedConditions.visibilityOf(iframe));
+        Assertions.assertTrue(iframe.isDisplayed());
     }
 
     @AfterEach
