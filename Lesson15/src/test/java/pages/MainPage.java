@@ -44,9 +44,6 @@ public class MainPage extends BaseSeleniumPage {
         builder.click(button0).pause(1000).keyDown(Keys.ESCAPE).keyUp(Keys.ESCAPE).build().perform();
         builder.click(button1).pause(1000).keyDown(Keys.ESCAPE).keyUp(Keys.ESCAPE).build().perform();
         builder.click(button2).pause(1000).keyDown(Keys.ESCAPE).keyUp(Keys.ESCAPE).build().perform();
-//        button0.click();
-//        button1.click();
-//        button2.click();
         return this;
     }
 
