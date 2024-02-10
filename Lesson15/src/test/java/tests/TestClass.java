@@ -8,7 +8,7 @@ import pages.MainPage;
 public class TestClass extends BaseSeleniumTest {
     @Test
     @DisplayName("Проверка первых трёх позиций товара с главной страницы сайта")
-    // если среди этих позиций будет одежда с выбором размера (случайное событие), то эта позиция добавлена не будет
+    // если среди этих позиций будет одежда с выбором размера (случайное событие), то эта позиция не будет добавлена
     void check() {
         MainPage obj = new MainPage();
         obj.addToBasket().print().goToBasket().print();
