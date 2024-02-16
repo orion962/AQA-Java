@@ -1,11 +1,15 @@
 package pages;
 
 import core.BaseSeleniumPage;
-import org.openqa.selenium.Keys;
+import helper.Item;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainPage extends BaseSeleniumPage {
     @FindBy(xpath = "//article[@data-card-index='0']")
@@ -39,11 +43,22 @@ public class MainPage extends BaseSeleniumPage {
         PageFactory.initElements(driver, this);
     }
 
+    private void checkPopup() {
+        try {
+            driver.findElement(By.xpath("//li[@class='sizes-list__item']//label")).click();
+        } catch (Exception ignored) {
+
+        }
+    }
+
     public MainPage addToBasket() {
         Actions builder = new Actions(driver);
-        builder.click(button0).pause(1000).keyDown(Keys.ESCAPE).keyUp(Keys.ESCAPE).build().perform();
-        builder.click(button1).pause(1000).keyDown(Keys.ESCAPE).keyUp(Keys.ESCAPE).build().perform();
-        builder.click(button2).pause(1000).keyDown(Keys.ESCAPE).keyUp(Keys.ESCAPE).build().perform();
+        builder.click(button0).build().perform();
+        checkPopup();
+        builder.click(button1).build().perform();
+        checkPopup();
+        builder.click(button2).build().perform();
+        checkPopup();
         return this;
     }
 
@@ -52,14 +67,10 @@ public class MainPage extends BaseSeleniumPage {
         return new BasketPage();
     }
 
-    public MainPage print() {
-        System.out.println(title2.getAttribute("aria-label"));
-        System.out.println(price2.getText());
-        System.out.println(title1.getAttribute("aria-label"));
-        System.out.println(price1.getText());
-        System.out.println(title0.getAttribute("aria-label"));
-        System.out.println(price0.getText());
-        System.out.println();
-        return this;
+    public ArrayList<Item> getItems() {
+        return new ArrayList<>(Arrays.asList(
+                new Item(title2.getAttribute("aria-label"), price2.getText()),
+                new Item(title1.getAttribute("aria-label"), price1.getText()),
+                new Item(title0.getAttribute("aria-label"), price0.getText())));
     }
 }
