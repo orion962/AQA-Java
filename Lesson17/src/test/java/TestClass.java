@@ -1,10 +1,10 @@
 import io.appium.java_client.android.AndroidDriver;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class TestClass {
     private AndroidDriver driver;
 
-    @BeforeEach
+    @BeforeTest
     public void initialize() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName", "Pixel 6a");
@@ -33,7 +33,7 @@ public class TestClass {
         driver.findElement(By.id("com.google.android.calculator:id/op_add")).click();
         driver.findElement(By.id("com.google.android.calculator:id/digit_2")).click();
         driver.findElement(By.id("com.google.android.calculator:id/eq")).click();
-        Assertions.assertEquals("3",
+        Assert.assertEquals("3",
                 driver.findElement(By.id("com.google.android.calculator:id/result_final")).getText());
     }
 
@@ -43,7 +43,7 @@ public class TestClass {
         driver.findElement(By.id("com.google.android.calculator:id/op_sub")).click();
         driver.findElement(By.id("com.google.android.calculator:id/digit_2")).click();
         driver.findElement(By.id("com.google.android.calculator:id/eq")).click();
-        Assertions.assertEquals("−1",
+        Assert.assertEquals("−1",
                 driver.findElement(By.id("com.google.android.calculator:id/result_final")).getText());
     }
 
@@ -53,7 +53,7 @@ public class TestClass {
         driver.findElement(By.id("com.google.android.calculator:id/op_mul")).click();
         driver.findElement(By.id("com.google.android.calculator:id/digit_2")).click();
         driver.findElement(By.id("com.google.android.calculator:id/eq")).click();
-        Assertions.assertEquals("2",
+        Assert.assertEquals("2",
                 driver.findElement(By.id("com.google.android.calculator:id/result_final")).getText());
     }
 
@@ -63,11 +63,11 @@ public class TestClass {
         driver.findElement(By.id("com.google.android.calculator:id/op_div")).click();
         driver.findElement(By.id("com.google.android.calculator:id/digit_2")).click();
         driver.findElement(By.id("com.google.android.calculator:id/eq")).click();
-        Assertions.assertEquals("0.5",
+        Assert.assertEquals("0.5",
                 driver.findElement(By.id("com.google.android.calculator:id/result_final")).getText());
     }
 
-    @AfterEach
+    @AfterTest
     void finish() {
         if (driver != null) {
             driver.quit();
